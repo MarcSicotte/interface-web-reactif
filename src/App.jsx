@@ -3,8 +3,13 @@ import Entete from './Entete';
 import PiedPage from './PiedPage';
 import ListeProduits from './ListeProduits';
 import {useEffect, useState} from 'react';
+import {Routes, Route} from 'react-router-dom';
+import Accueil from './Accueil';
+import Propos from './Propos';
 
 function App() {
+
+
   // État React pour gérer un panier d'achats
   const etatPanier = useState(() => JSON.parse(window.localStorage.getItem('panier-4pa')) || {});
   // Remarquez que useState retourne un tableau : 
@@ -27,16 +32,33 @@ function App() {
   useEffect(() => window.localStorage.setItem('panier-4pa', JSON.stringify(panier)), [panier]);
 
   
+//État de l'utulisateur connecté
+  const[util, setUtil] = useState(null);
+
+  /**
+   * Délcenche le processus d'authentification avec google auth provider
+   */
+  function connexion(){
+    
+  }
 
   return (
     <div className="App">
-      <Entete ali="baba" panier={panier} test="Allo Props" />
-      <ListeProduits etatPanier={etatPanier} />
-      <div>
-        <span>Nombre de clics : {compteur} </span>
-        <button onClick={() => {setCompteur(compteur+1); console.log('Compteur des clics : ', compteur);}}>Cliquez-moi</button>
-      </div>
+      {
+        util?
+        <>
+      <Entete util={util} setUtil={setUtil} ali="baba" panier={panier} test="Allo Props" />
+      <Routes>
+        <Route path='/' element={<Accueil/>}></Route>
+        <Route path='/Propos' element={<Propos/>}></Route>
+        <Route path='/Produits' element={ <ListeProduits etatPanier={etatPanier} />}></Route>
+       
+      </Routes>
       <PiedPage />
+      </>
+      :
+      <button onClick={connexion}>Connexion</button>
+      }
     </div>
   );
 }

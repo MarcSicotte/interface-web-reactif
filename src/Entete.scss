@@ -13,7 +13,19 @@
         padding: 1rem 2rem;
     }
 
-    nav {
+    .lien-actif{
+         font-weight: bold;
+         color: yellow;
+    }
+
+    .nav-principale{
+        display: flex;
+        margin-right: auto;
+        column-gap: 1rem;
+        font-size: 1rem;
+    }
+
+    .nav-secondaire {
         padding: 1rem 2rem;
         display: flex;
         align-items: center;

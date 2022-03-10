@@ -1,0 +1,14 @@
+.ListeProduits {
+  padding: 2rem;
+}
+
+.ListeProduits h2 {
+  font-size: 2rem;
+}
+
+.ListeProduits .produits {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+/*# sourceMappingURL=ListeProduits.css.map */

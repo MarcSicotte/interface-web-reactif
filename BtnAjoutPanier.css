@@ -1,0 +1,11 @@
+.BtnAjoutPanier {
+  margin: 5px;
+  background-color: seagreen;
+  color: white;
+  padding: 0.75rem;
+  border: 1px solid #014901;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+/*# sourceMappingURL=BtnAjoutPanier.css.map */

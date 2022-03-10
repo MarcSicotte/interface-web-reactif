@@ -6,6 +6,11 @@ import {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import Accueil from './Accueil';
 import Propos from './Propos';
+import { authFirebase, authGoogle } from './firebase/init';
+
+
+import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
+
 
 function App() {
 
@@ -39,9 +44,20 @@ function App() {
    * Délcenche le processus d'authentification avec google auth provider
    */
   function connexion(){
+
+    //utiliser la fonction signInWithPopup 
+    signInWithPopup(authFirebase, authGoogle).then(
+
+      infosAuthGoogle => setUtil(infosAuthGoogle.user)
+      );
     
   }
 
+  //Attacher un gestinoraire qui observe quand le user est connecter et change d'état quand il est déco (permet de garder le user connecter meme en raffraichissant)
+  useEffect(() => onAuthStateChanged(authFirebase, user => setUtil(user)),
+  [])
+   
+  
   return (
     <div className="App">
       {
